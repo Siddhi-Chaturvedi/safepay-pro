@@ -76,7 +76,7 @@ Keep all other fields in English.`;
 export const scanMessage = createServerFn({ method: "POST" })
   .inputValidator((d) => Input.parse(d))
   .handler(async ({ data }): Promise<ScanResult> => {
-    const key = process.env.LOVABLE_API_KEY;
+    const key = process.env["LOVABLE_API_KEY"];
     if (!key) throw new Error("AI is not configured.");
     if (!data.text.trim() && !data.image) throw new Error("Paste a message or upload a screenshot first.");
 
